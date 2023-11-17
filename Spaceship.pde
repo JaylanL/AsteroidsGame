@@ -12,29 +12,15 @@ class Spaceship extends Floater
      yCorners[2]=8;
      xCorners[3]=-2;
      yCorners[3]=0;
-     myColor=color(255,255,255);
-     myCenterX=myCenterY=0;
+     myColor=color(108,255,5);
+     myCenterX=myCenterY=500;
      myXspeed=myYspeed=0;
      myPointDirection=0;
     }
-    public void setXspeed(double x){
-    myXspeed+=x;
-    }
-    public void keyPressed(){
-     if(key==w){
-  
-    }
-    if(key==a){
-      
-    }
-    if(key==s){
-      
-    }
-    if(key==d){
-      
-    }
-    if(key==h){
-     bob.setXspeed(0);
-     bob.hyperspace();
+    public void hyperSpace(){
+     myCenterX=(int)(Math.random()*1000);
+     myCenterY=(int)(Math.random()*1000); 
+     myXspeed=myYspeed=0;
+     myPointDirection=(int)(Math.random()*360);
     }
 }

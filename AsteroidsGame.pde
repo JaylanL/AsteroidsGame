@@ -1,9 +1,9 @@
 //your variable declarations here
 Spaceship ben = new Spaceship();
-Star[] ken= new Star[1000];
+Star[] ken= new Star[300];
 public void setup() 
 {
- size(1000,1000);
+ size(500,500);
  for(int i=0;i<ken.length;i++){
   ken[i]=new Star();
  }

@@ -1,3 +1,6 @@
+//your variable declarations here
+Spaceship ben = new Spaceship();
+Star[] ken= new Star[1000];
 public void setup() 
 {
  size(1000,1000);
@@ -7,7 +10,7 @@ public void setup()
 }
 public void draw() 
 {
-   background(0,0,0);
+   background(0);
    noStroke();
    for(int i=0;i<ken.length;i++){
      ken[i].show();

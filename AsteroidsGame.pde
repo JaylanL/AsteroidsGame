@@ -1,30 +1,34 @@
 //your variable declarations here
 Spaceship ben = new Spaceship();
 Star[] ken= new Star[300];
-Asteroid[]fen = new Asteroid[20];
+ArrayList<Asteroid> aen = new ArrayList <Asteroid>();
 public void setup() 
 {
  size(500,500);
  for(int i=0;i<ken.length;i++){
   ken[i]=new Star();
  }
-    for(int i=0;i<fen.length;i++){
-     fen[i]=new Asteroid();
-   }
+ for(int i=0;i<30;i++){
+   aen.add(new Asteroid());
+ }
 }
 public void draw() 
 {
    background(0);
-   noStroke();
    for(int i=0;i<ken.length;i++){
      ken[i].show();
    }
-   for(int i=0;i<fen.length;i++){
-     fen[i].show();
+   for (int i = 0; i<aen.size(); i++) {
+    aen.get(i).show();
+    aen.get(i).move();
+    double distance = dist((float)ben.getCenterX(), (float)ben.getCenterY(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
+    if (distance <= 20) {
+      aen.remove(i);
+    }
    }
    ben.show();
    ben.move();
-}
+   }
 public void keyPressed(){
   if (key=='w')
   ben.accelerate(2);

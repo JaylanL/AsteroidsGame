@@ -1,7 +1,8 @@
 //your variable declarations here
-Spaceship ben = new Spaceship();
+Spaceship sen = new Spaceship();
 Star[] ken= new Star[300];
 ArrayList<Asteroid> aen = new ArrayList <Asteroid>();
+ArrayList<Bullet> ben=new ArrayList <Bullet>();
 public void setup() 
 {
  size(500,500);
@@ -15,30 +16,35 @@ public void setup()
 public void draw() 
 {
    background(0);
+   sen.move();
+   sen.show();
    for(int i=0;i<ken.length;i++){
      ken[i].show();
    }
    for (int i = 0; i<aen.size(); i++) {
     aen.get(i).show();
     aen.get(i).move();
-    double distance = dist((float)ben.getCenterX(), (float)ben.getCenterY(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
+    double distance = dist((float)sen.getCenterX(), (float)sen.getCenterY(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
     if (distance <= 20) {
       aen.remove(i);
     }
    }
-   ben.show();
-   ben.move();
+   for(int i=0;i<ben.size();i++){
+     ben.get(i).move();
+     ben.get(i).show();
    }
+}
 public void keyPressed(){
   if (key=='w')
-  ben.accelerate(2);
+  sen.accelerate(2);
   if(key=='a')
-  ben.turn(-30);
+  sen.turn(-30);
   if(key=='s')
-  ben.accelerate(-2);
+  sen.accelerate(-2);
   if(key=='d')
-  ben.turn(30);
+  sen.turn(30);
   if(key=='h')
-  ben.hyperSpace();
+  sen.hyperSpace();
+  if(key==BACKSPACE)
   
 }

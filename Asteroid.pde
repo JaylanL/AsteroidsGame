@@ -1,58 +1,41 @@
-//your variable declarations here
-Spaceship sen = new Spaceship();
-Star[] ken= new Star[300];
-ArrayList<Asteroid> aen = new ArrayList <Asteroid>();
-ArrayList<Bullet> ben=new ArrayList <Bullet>();
-int count=0;
-public void setup() 
-{
- size(500,500);
- for(int i=0;i<ken.length;i++){
-  ken[i]=new Star();
- }
- for(int i=0;i<30;i++){
-   aen.add(new Asteroid());
- }
-}
-public void draw() 
-{
-   background(0);
-   sen.move();
-   sen.show();
-   for(int i=0;i<ken.length;i++){
-     ken[i].show();
-   }
-   for (int i = 0; i<aen.size(); i++) {
-    aen.get(i).show();
-    aen.get(i).move();
-    double distance = dist((float)sen.getCenterX(), (float)sen.getCenterY(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
-    if (distance <= 20) {
-      aen.remove(i);
-      count+=10;
+class Asteroid extends Floater  
+{   
+  private double rotSpeed;
+    public Asteroid(){
+       corners=6;
+       xCorners=new int[corners];
+       yCorners=new int[corners];
+       xCorners[0]=-11;
+       yCorners[0]=-7;
+       xCorners[1]=7;
+       yCorners[1]=8;
+       xCorners[2]=13;
+       yCorners[2]=0;
+       xCorners[3]=6;
+       yCorners[3]=10;
+       xCorners[4]=-11;
+       yCorners[4]=8;
+       xCorners[5]=-5;
+       yCorners[5]=0;;
+       myColor=color(255,255,255);
+       myCenterX=Math.random()*500;
+       myCenterY=Math.random()*500;
+       myXspeed=Math.random()*2-1;
+       myYspeed=Math.random()*2-1;
+       myPointDirection=(int)(Math.random()*361);
+       rotSpeed=Math.random()*2+1;
     }
-   }
-   for(int i=0;i<ben.size();i++){
-     ben.get(i).show();
-     ben.get(i).move();
-    double d = dist((float)ben.get(i).getCenterX(),  (float)ben.get(i).getCenterX(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
-    if (d <=20){
-     aen.remove(i); 
-     count+=10;
-     ben.remove(i);
-    }
-   }    
+    public void move()
+{
+   turn(rotSpeed);
+   super.move();
 }
-public void keyPressed(){
-  if (key=='w')
-  sen.accelerate(2);
-  if(key=='a')
-  sen.turn(-30);
-  if(key=='s')
-  sen.accelerate(-2);
-  if(key=='d')
-  sen.turn(30);
-  if(key=='h')
-  sen.hyperSpace();
-  if(key==' ')
-  ben.add(new Bullet(sen));
+  public double getCenterX()
+  {
+     return myCenterX;
+  }
+  public double getCenterY()
+  {
+     return myCenterY;
+  }
 }

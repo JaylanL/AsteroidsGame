@@ -3,6 +3,7 @@ Spaceship sen = new Spaceship();
 Star[] ken= new Star[300];
 ArrayList<Asteroid> aen = new ArrayList <Asteroid>();
 ArrayList<Bullet> ben=new ArrayList <Bullet>();
+int count=0;
 public void setup() 
 {
  size(500,500);
@@ -27,12 +28,19 @@ public void draw()
     double distance = dist((float)sen.getCenterX(), (float)sen.getCenterY(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
     if (distance <= 20) {
       aen.remove(i);
+      count+=10;
     }
    }
    for(int i=0;i<ben.size();i++){
-     ben.get(i).move();
      ben.get(i).show();
-   }
+     ben.get(i).move();
+    double d = dist((float)ben.get(i).getCenterX(),  (float)ben.get(i).getCenterX(), (float)aen.get(i).getCenterX(), (float)aen.get(i).getCenterY());
+    if (d <=20){
+     aen.remove(i); 
+     count+=10;
+     ben.remove(i);
+    }
+   }    
 }
 public void keyPressed(){
   if (key=='w')
@@ -45,6 +53,6 @@ public void keyPressed(){
   sen.turn(30);
   if(key=='h')
   sen.hyperSpace();
-  if(key==BACKSPACE)
-  
+  if(key==' ')
+  ben.add(new Bullet(sen));
 }

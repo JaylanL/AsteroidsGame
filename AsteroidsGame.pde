@@ -54,7 +54,7 @@ public void keyPressed(){
   sen.accelerate(-2);
   if(key=='d')
   sen.turn(30);
-  if(key==' ')
+  if(key=='h')
   sen.hyperSpace();
   if(key==' ')
   ben.add(new Bullet(sen));

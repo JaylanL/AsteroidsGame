@@ -3,26 +3,22 @@ class Bullet extends Floater{
   myCenterX= theShip.getCenterX();
   myCenterY= theShip.getCenterY();
   myXspeed= theShip.getXspeed();
-  myYspeed= theShip.getYspeed();
-  myPointDirection= theShip.myPointDirection();
-  accelerate(.6);
+  myYspeed = theShip.getYspeed();
+  myPointDirection=theShip.getPointDirection();
+  accelerate(10);
  } 
  public void move(){
-   super.move();
+   myCenterX += myXspeed;
+   myCenterY += myYspeed;
  }
  public void show(){
    fill(255);
   ellipse((float)myCenterX,(float)myCenterY,10,10); 
  }
- public double getCenterX()
-  {
-     return myCenterX;
+ public double getCenterX() {
+    return myCenterX;
   }
-  public double getCenterY()
-  {
-     return myCenterY;
-  }
-  public double myPointDirection(){
-   return myPointDirection; 
+  public double getCenterY() {
+    return myCenterY;
   }
 }
